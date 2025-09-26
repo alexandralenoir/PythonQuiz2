@@ -1,71 +1,49 @@
-"""python-quiz-2.py
-Simplified, easy-to-read example demonstrating:
-- variables
-- data types
-- a function
-- a small class
-
-Run this file directly to see the example output.
-"""
-
-# Variables
-age = 18
-name = "Alex"
-
-# Data types
-brothers = ["Mason", "Nathan", "Lincoln"]
-year = 2025
-
-def introduce(names):
-    """Return a single string listing the names."""
-    return ", ".join(names)
-
-class Brother:
-    """Small class with one method."""
+class Person:
     def __init__(self, name, age):
         self.name = name
-        self.age = age
-
-    def describe(self):
-        return f"{self.name} is {self.age} years old"
-
-if __name__ == "__main__":
-    print("age value:", age)
-    print("name (type):", type(name))
-    print("brothers (type):", type(brothers))
-    print("year (type):", type(year))
-
-    print("Introduce result:", introduce(brothers))
-
-    s = Brother(name, age)
-    print(s.describe())
-#Python Quiz 2
-#Fork this repository to your own GitHub account and complete the following tasks in the pythonquiz2.py file.
-
-#Submit a URL link to your completed repository ON GITHUB on Moodle. 
-
-#variables: show an example of variable assignment and usage. Be sure to print the variable to demonstrate its value.
-
-#data types: demonstrate at least three different data types (e.g., integer, string, list) and print their types using the type() function.
-
-
-#functions: define a simple function that takes an argument and returns a value. Call the function and print the result.
-
-
-#classes: create a simple class with an __init__ method and one other method. Instantiate the class and call the method, printing the result.
-class Brothers:
-    def __init__(self, names, age):
-
-        self.names = names
-
         self.__age = age
-
-
 
     def get_age(self):
-
         return self.__age
-
+    
     def set_age(self, age):
-
         self.__age = age
+        return self.__age
+    
+    def get_role(self):
+        return "Person"
+    
+    def print_role(self):
+        print(f"{self.name} is my {self.get_role()} who's age is {self.get_age()} years old.")
+
+class Me(Person):
+    def __init__(self, name, age, car):
+        super().__init__(name, age)
+        self.car = car
+
+    def get_role(self):
+        return "name"
+    
+class Brother(Person):
+    def __init__(self, name, age, instrument):
+        super().__init__(name, age)
+        self.instrument = instrument
+
+    def get_role(self):
+        return "Brother"
+    
+
+me = Me("Alex", 18, "1993 Buick Roadmaster.")
+brother = Brother("Mason", 16, "piano.")
+
+print(f"I own a {me.car}")
+print(f"Mason loves music and plays the {brother.instrument}")
+      
+print(me.get_role())
+print(brother.get_role())
+
+me.print_role()
+brother.print_role()
+
+# my terminal on vs studio code is not working correctly so I ran it through github to make sure it worked.
+# I also had issues getting the code to transfer over in the file when creating the repository so I had to copy and paste it to this.
